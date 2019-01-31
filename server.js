@@ -30,3 +30,9 @@ app.get("/api/hello", function (req, res) {
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
+
+//Api and Microservices Projects - timestamp microservice
+app.get('/api/timestamp/:date_string?', function(req,res) {
+  let time = new Date(req.params.date_string); 
+  res.json({"unix": time.getTime(), "utc": time.toUTCString()});
+});
